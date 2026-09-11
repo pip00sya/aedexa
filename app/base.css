@@ -1,0 +1,250 @@
+/* ARCHE - визуальный язык AEDEXA: камень, свет, пустота */
+:root {
+  --font-aedexa: "Golos Text";
+  --font-display: "Golos Text";
+  --font-mono: "JetBrains Mono";
+  --font-mark: "Jost";
+
+  /* Камень: от черного мрамора к белому */
+  --void: #0a0a0c;
+  --onyx: #101014;
+  --basalt: #15151a;
+  --slate: #1b1b21;
+  --stone: #2a2a32;
+  --ash: #8e8c86;
+  --mist: #c2c0b9;
+  --bone: #dfd9cd;
+  --marble: #f5f3ee;
+  --chalk: #ffffff;
+
+  /* Две ноты, каждая со своим единственным смыслом */
+  --bronze: #c8a268;
+  --terra: #c4705e;
+
+  /* Волосяные линии вместо границ */
+  --hair: rgba(255, 255, 255, 0.13);
+  --hair-2: rgba(255, 255, 255, 0.06);
+
+  /* Смысловые имена, на которых стоит весь остальной лист */
+  --bg: var(--void);
+  --panel: var(--basalt);
+  --panel-2: var(--slate);
+  --line: var(--hair);
+  --text: var(--marble);
+  --muted: var(--mist);
+  /* Акцент - не цвет, а свет: белая пилюля на черном */
+  --accent: var(--chalk);
+  --accent-2: var(--bone);
+
+  /* Светлый лист */
+  --sheet: var(--marble);
+  --sheet-ink: var(--onyx);
+  --sheet-muted: #6e6c68;
+  --sheet-hair: rgba(16, 16, 20, 0.14);
+  --sheet-hair-2: rgba(16, 16, 20, 0.07);
+
+  /* Ритм: единственный радиус и высота пилюли */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --pill: 999px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  background: var(--bg);
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-aedexa), "Nunito Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Ровные колонки цифр без перехода на моноширинный Courier */
+  font-variant-numeric: tabular-nums;
+}
+/* Имя продукта */
+/* Знак не сжимается ни в одной флексовой строке */
+.aedexa-glyph {
+  flex-shrink: 0;
+}
+
+.aedexa-mark {
+  /* Разрядка одна на все места */
+  --mark-tracking: 0.45em;
+  font-family: var(--font-mark), var(--font-display), sans-serif;
+  letter-spacing: var(--mark-tracking);
+  /* Разрядка добавляет пробел справа от последней буквы */
+  margin-right: calc(-1 * var(--mark-tracking));
+  text-transform: uppercase;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+button,
+label[for],
+input[type="range"] {
+  touch-action: manipulation;
+}
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.skip-link {
+  position: fixed;
+  z-index: 200;
+  left: 16px;
+  top: -60px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--bone);
+  background: var(--accent);
+  font-weight: 700;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 14px;
+}
+.rail {
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 10px;
+  background: var(--marble);
+}
+.workspace {
+  min-width: 0;
+  padding: 0 24px 24px;
+} /* Метка раздела на экранах результата */
+.eyebrow {
+  margin: 0 0 7px;
+  font-family: var(--font-aedexa), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(20px, 2.2vw, 30px);
+  letter-spacing: -0.03em;
+}
+h2 {
+  margin-bottom: 0;
+  font-size: 20px;
+}
+.legend {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+.legend.green {
+  background: var(--accent-2);
+}
+.contour {
+  position: absolute;
+  border: 1px dashed rgba(219, 219, 219, 0.68);
+  transform: rotateX(60deg) rotateZ(-8deg);
+}
+.axis {
+  position: absolute;
+  bottom: 30px;
+  left: 28px;
+  width: 46px;
+  height: 46px;
+  font:
+    700 9px var(--font-aedexa),
+    "Nunito Sans",
+    sans-serif;
+  color: var(--muted);
+}
+.axis i {
+  position: absolute;
+  font-style: normal;
+}
+.axis .x {
+  left: 38px;
+  top: 30px;
+  color: var(--terra);
+}
+.axis .y {
+  left: 2px;
+  top: 5px;
+  color: var(--ash);
+}
+.axis .z {
+  left: 12px;
+  top: 33px;
+  color: var(--mist);
+}
+.inspector-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.score {
+  font:
+    700 14px var(--font-aedexa),
+    "Nunito Sans",
+    sans-serif;
+  color: var(--accent);
+  background: var(--bone);
+  border: 1px solid var(--ash);
+  padding: 9px;
+  border-radius: 12px;
+}
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 14px 0 20px;
+}
+@keyframes scan {
+  0%,
+  100% {
+    top: 20%;
+    opacity: 0.2;
+  }
+  50% {
+    top: 78%;
+    opacity: 0.85;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 620px) {
+  .rail {
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 68px;
+    flex-direction: row;
+    border-right: 0;
+    border-top: 1px solid var(--line);
+    padding: 6px 10px;
+  }
+  .workspace {
+    padding: 0 14px 14px;
+  }
+}

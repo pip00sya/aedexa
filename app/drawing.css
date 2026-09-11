@@ -1,0 +1,466 @@
+/* Подписи чертежа, прочитанные ИИ */
+.cad-semantics-status {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.cad-semantics-status.pending {
+  color: var(--chalk);
+}
+.cad-semantics-status.ready {
+  color: var(--marble);
+}
+.cad-semantics-status.error {
+  color: var(--terra);
+}
+.cad-semantics-summary {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.cad-semantics-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.cad-semantics-list li {
+  display: grid;
+  grid-template-columns: 60px minmax(96px, 150px) 1fr auto;
+  gap: 3px 12px;
+  align-items: baseline;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--basalt);
+  font-size: 13px;
+}
+.cad-semantics-list li strong {
+  font-size: 13.5px;
+  overflow-wrap: anywhere;
+}
+.cad-semantics-list li .kind {
+  color: var(--bone);
+  font-weight: 700;
+  font-size: 12.5px;
+}
+.cad-semantics-list li em {
+  color: var(--ash);
+  font-style: normal;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+.cad-semantics-list li small {
+  grid-column: 3 / -1;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.cad-semantics-list li .cad-object-preview {
+  grid-row: 1 / span 3;
+  align-self: start;
+}
+.cad-semantics-list li small.evidence {
+  color: var(--ash);
+  font-size: 12.5px;
+}
+.cad-semantics-note {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.cad-semantics-notes {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--bone);
+  border-radius: 9px;
+  background: var(--basalt);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.cad-semantics-notes ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+@media (max-width: 720px) {
+  .cad-semantics-list li {
+    grid-template-columns: 60px 1fr;
+  }
+  .cad-semantics-list li small {
+    grid-column: 2;
+  }
+  .cad-semantics-list li em {
+    grid-column: 2;
+  }
+}
+
+/* Точный 2D-чертеж */
+.cad-drawing {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bone);
+}
+.cad-drawing-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+.cad-drawing-canvas:active {
+  cursor: grabbing;
+}
+.cad-drawing-toolbar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+.cad-drawing-toolbar button,
+.cad-drawing-source button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  color: var(--marble);
+  background: rgba(15, 20, 26, 0.78);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cad-drawing-toolbar button:hover,
+.cad-drawing-source button:hover {
+  background: rgba(15, 20, 26, 0.95);
+}
+.cad-drawing-source {
+  position: absolute;
+  top: 48px;
+  left: 12px;
+  display: flex;
+  gap: 4px;
+  z-index: 3;
+}
+.cad-drawing-source button.selected {
+  color: var(--bone);
+  background: var(--onyx);
+  border-color: var(--marble);
+}
+.cad-drawing-status {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  padding: 5px 8px;
+  border-radius: 9px;
+  color: var(--mist);
+  background: rgba(15, 20, 26, 0.7);
+  font-size: 11.5px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Миниатюры объектов */
+.cad-object-preview {
+  display: block;
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--basalt);
+}
+
+/* Выбор кромок дороги */
+.cad-road-edge-option {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  align-items: baseline;
+  cursor: pointer;
+}
+
+.cad-road-edge-option input {
+  grid-row: 1 / span 3;
+  align-self: center;
+  accent-color: var(--chalk);
+  width: 16px;
+  height: 16px;
+}
+
+/* Участок в объеме */
+.placement-scene {
+  display: block;
+  width: 100%;
+  height: min(70vh, 680px);
+  min-height: 580px;
+}
+.placement-scene > canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+.placement-scene-broken {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px;
+  color: var(--marble);
+}
+.placement-scene-broken p {
+  max-width: 42ch;
+  margin: 0;
+  color: var(--ash);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.placement-view-toggle {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  background: var(--panel);
+}
+.placement-view-toggle button {
+  min-height: 30px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--mist);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.placement-view-toggle button.active {
+  background: var(--marble);
+  color: var(--panel);
+}
+.placement-scene-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+.placement-scene-tools label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--mist);
+  font-size: 13px;
+  font-weight: 700;
+}
+.placement-scene-tools select {
+  min-height: 30px;
+  padding: 0 8px;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  background: var(--panel);
+  font: inherit;
+  font-size: 13px;
+}
+.placement-scene-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-top: 1px solid var(--hair);
+  color: var(--mist);
+  font-size: 13px;
+  line-height: 1.45;
+  background: var(--basalt);
+}
+.placement-scene-note svg {
+  flex: none;
+  color: var(--chalk);
+}
+.terrain-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.terrain-facts article {
+  padding: 8px 10px;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.terrain-facts small {
+  display: block;
+  color: var(--ash);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.terrain-facts strong {
+  font-size: 14.5px;
+}
+.objects-earth {
+  margin: 6px 0 0;
+  color: var(--mist);
+  font-size: 12.5px;
+}
+.objects-earth b {
+  color: var(--marble);
+}
+.site-object.dragging {
+  cursor: grabbing;
+}
+/* Четыре ребенка */
+.placement-canvas-toolbar {
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+}
+.placement-scene-tools select {
+  max-width: 150px;
+}
+.placement-view-toggle.compact button {
+  min-height: 28px;
+  padding: 0 9px;
+  font-size: 12.5px;
+}
+.placement-view-toggle.compact button:hover {
+  background: var(--slate);
+  color: var(--marble);
+}
+.placement-scene-tools {
+  grid-column: 1 / -1;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+/* Чем программа сочла чертеж */
+.purpose-card {
+  border-left: 3px solid var(--chalk);
+}
+.purpose-card.blocked {
+  border-left-color: var(--bronze);
+}
+.purpose-verdict {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.purpose-verdict svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--chalk);
+}
+.purpose-card.blocked .purpose-verdict svg {
+  color: var(--bronze);
+}
+.purpose-reasons {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.purpose-reasons li {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--slate);
+  color: var(--mist);
+  font-size: 12.5px;
+}
+
+/* Слои чертежа и назначенные им роли */
+.layer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+.layer-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 148px;
+  gap: 4px 10px;
+  padding: 9px 11px;
+  border: 1px solid var(--hair);
+  border-left: 3px solid var(--ash);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.layer-item.edited {
+  border-left-color: var(--chalk);
+  background: var(--slate);
+}
+.layer-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+.layer-head strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 700;
+}
+.layer-head b {
+  margin-left: auto;
+  color: var(--ash);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.layer-item .placement-field {
+  grid-row: span 2;
+  align-self: center;
+}
+.layer-reason {
+  color: var(--ash);
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+
+/* Отмеченное окружение */
+.context-mark circle:last-child {
+  fill: var(--terra);
+  stroke: var(--panel);
+  stroke-width: 1.5;
+}
+.context-mark.entrance circle:last-child {
+  fill: var(--chalk);
+}
+.context-mark.tree circle:last-child {
+  fill: var(--mist);
+}
+.context-mark.well circle:last-child {
+  fill: var(--mist);
+}
+.context-mark.pole circle:last-child {
+  fill: var(--bone);
+}
+.context-mark.neighbor-house circle:last-child {
+  fill: var(--ash);
+}
+.context-zone {
+  fill: rgba(196, 112, 94, 0.09);
+  stroke: var(--terra);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  vector-effect: non-scaling-stroke;
+}
+.context-mark.tree .context-zone {
+  fill: rgba(127, 127, 127, 0.09);
+  stroke: var(--mist);
+}
+.context-mark.well .context-zone {
+  fill: rgba(138, 138, 138, 0.09);
+  stroke: var(--mist);
+}
+.context-mark.pole .context-zone {
+  fill: rgba(85, 85, 85, 0.09);
+  stroke: var(--bone);
+}

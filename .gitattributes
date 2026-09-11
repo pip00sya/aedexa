@@ -1,0 +1,13 @@
+# Текст в репозитории — с переводами строки LF, чертежи и картинки байт в байт.
+* text=auto eol=lf
+
+*.dwg binary
+*.dxf binary
+*.wasm binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.webm binary
+*.avif binary
+*.woff2 binary

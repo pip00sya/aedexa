@@ -1,0 +1,915 @@
+/* Светлые поверхности и смысловые цвета */
+.workspace {
+  background: var(--bg);
+}
+.rail {
+  background: var(--bone);
+  border-right-color: var(--ash);
+}
+.score {
+  color: var(--chalk);
+  border-color: var(--bone);
+  background: var(--slate);
+}
+.cad-primary-action,
+.cad-primary-export {
+  color: var(--panel);
+  border-color: var(--chalk);
+  background: var(--chalk);
+  box-shadow: 0 8px 20px rgba(96, 96, 96, 0.18);
+}
+.cad-primary-action:hover,
+.cad-primary-export:hover {
+  color: var(--panel);
+  border-color: var(--chalk);
+  background: var(--chalk);
+  filter: none;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline-color: var(--chalk);
+}
+
+.cad-segmented {
+  border-color: var(--line);
+  background: var(--void);
+}
+.cad-segmented button.selected {
+  color: var(--chalk);
+  background: var(--panel);
+  box-shadow: 0 1px 4px rgba(33, 33, 33, 0.12);
+}
+.cad-intro,
+.cad-pipeline-card,
+.cad-processing,
+.cad-kpis article,
+.cad-scene-panel,
+.cad-inspector,
+.cad-layer-panel,
+.cad-terrain-quality {
+  color: var(--text);
+  border-color: var(--line);
+  background: var(--panel);
+  box-shadow: 0 8px 28px rgba(55, 55, 55, 0.055);
+}
+.cad-progress-track i,
+.cad-export-progress b {
+  background: var(--chalk);
+}
+.cad-layer-row select {
+  color: var(--text);
+  border-color: var(--bone);
+  background: var(--panel);
+}
+.parcel-boundary {
+  border-color: var(--ash);
+  background: rgba(116, 116, 116, 0.11);
+}
+.parcel-boundary > span {
+  color: var(--ash);
+  background: var(--basalt);
+}
+.red-line span {
+  color: var(--terra);
+  background: var(--stone);
+}
+.buildable-envelope {
+  border-color: var(--chalk);
+  background: rgba(96, 96, 96, 0.09);
+  box-shadow: inset 0 0 36px rgba(96, 96, 96, 0.05);
+}
+.cad-intro {
+  background: var(--panel);
+}
+.cad-secondary-action,
+.cad-replace,
+.cad-layer-heading button,
+.cad-error button {
+  color: var(--ash);
+  border-color: var(--bone);
+  background: var(--panel);
+}
+.cad-secondary-action:hover,
+.cad-replace:hover,
+.cad-layer-heading button:hover {
+  color: var(--chalk);
+  border-color: var(--mist);
+  background: var(--slate);
+}
+.cad-export-progress {
+  color: var(--ash);
+}
+.cad-export-progress > i,
+.cad-progress-track {
+  background: var(--basalt);
+}
+.cad-export-summary,
+.cad-local-note {
+  color: var(--ash);
+}
+/* Внешняя рамка панели */
+.cad-dropzone {
+  border-color: var(--hair);
+  background-color: var(--slate);
+}
+.cad-dropzone.dragging {
+  border-color: var(--chalk);
+  background-color: var(--slate);
+}
+.cad-upload-icon {
+  color: var(--chalk);
+  border-color: var(--bone);
+  background: var(--void);
+  box-shadow: 0 18px 48px rgba(96, 96, 96, 0.14);
+}
+.cad-step-label {
+  color: var(--bone);
+}
+.cad-pipeline-card li {
+  border-color: var(--line);
+}
+.cad-processing-visual {
+  color: var(--chalk);
+  border-color: var(--bone);
+  background: var(--slate);
+}
+.cad-processing-visual i {
+  background: var(--slate);
+}
+.cad-error {
+  color: var(--terra);
+  border-color: var(--terra);
+  background: var(--panel);
+}
+.cad-kpis article > svg {
+  color: var(--chalk);
+}
+.cad-scene-toolbar {
+  border-color: var(--line);
+}
+.cad-icon-control {
+  color: var(--ash);
+  border-color: var(--bone);
+  background: var(--panel);
+}
+.cad-icon-control.active {
+  color: var(--panel);
+  border-color: var(--chalk);
+  background: var(--chalk);
+}
+.cad-scene,
+.cad-view-loading {
+  background: var(--onyx);
+}
+.cad-scene-badge,
+.cad-scene-coordinates {
+  color: var(--ash);
+  border-color: rgba(144, 144, 144, 0.5);
+  background: rgba(255, 255, 255, 0.88);
+}
+.cad-scene-badge span {
+  background: var(--mist);
+  box-shadow: 0 0 0 4px rgba(155, 155, 155, 0.14);
+}
+.cad-kind-list,
+.cad-kind-list label {
+  border-color: var(--line);
+}
+.cad-checkbox {
+  border-color: var(--mist);
+  background: var(--panel);
+}
+.cad-kind-list input:checked + .cad-checkbox {
+  color: var(--panel);
+  border-color: var(--chalk);
+  background: var(--chalk);
+}
+.cad-kind-list input:focus-visible + .cad-checkbox {
+  outline-color: var(--chalk);
+}
+.cad-kind-list label > svg {
+  color: var(--ash);
+}
+/* Примечания к разбору */
+.cad-warning-list {
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.cad-warning-list p {
+  min-height: 38px;
+  border: 0;
+  border-radius: 0;
+  color: var(--muted);
+  background: transparent;
+}
+.cad-warning-list p + p {
+  border-top: 1px solid var(--line);
+}
+.cad-warning-list p svg {
+  flex: none;
+  color: var(--ash);
+}
+.cad-terrain-quality.ready {
+  color: var(--marble);
+  border-color: var(--mist);
+  background: var(--slate);
+}
+/* "Требует проверки" */
+.cad-terrain-quality.review {
+  border-color: var(--bronze);
+}
+.cad-terrain-quality.review h3 {
+  color: var(--bronze);
+}
+.cad-terrain-quality.insufficient {
+  border-color: var(--terra);
+}
+.cad-terrain-quality.insufficient h3 {
+  color: var(--terra);
+}
+.cad-terrain-quality dl div {
+  border-color: var(--bone);
+}
+.cad-layer-table,
+.cad-layer-row {
+  border-color: var(--line);
+}
+.cad-layer-row.head {
+  color: var(--ash);
+  background: var(--void);
+}
+.cad-layer-row > span {
+  color: var(--ash);
+}
+.cad-layer-row small {
+  color: var(--ash);
+}
+/* Спорная строка */
+.cad-layer-row.needs-review {
+  border-left: 2px solid var(--bronze);
+  background: var(--stone);
+}
+.cad-layer-row.needs-review strong::after {
+  color: var(--bronze);
+  border-color: var(--bronze);
+  background: var(--basalt);
+}
+
+.cad-preflight {
+  margin-top: 10px;
+  padding: 22px;
+  border: 1px solid var(--bronze);
+  border-radius: 16px;
+  color: var(--text);
+  background: var(--panel);
+  box-shadow: 0 10px 32px rgba(55, 55, 55, 0.07);
+}
+.cad-preflight.blocked {
+  border-color: var(--terra);
+}
+.cad-preflight-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+.cad-preflight-heading h3 {
+  margin-top: 5px;
+  font-size: clamp(21px, 2.2vw, 29px);
+}
+.cad-preflight-heading p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+.cad-preflight-state {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  border: 1px solid var(--bronze);
+  border-radius: 99px;
+  color: var(--bronze);
+  background: var(--panel-2);
+  border-left: 2px solid var(--bronze);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.cad-preflight-state.blocked {
+  color: var(--terra);
+  border-color: var(--terra);
+  background: var(--panel-2);
+  border-left: 2px solid var(--terra);
+}
+.cad-preflight-file {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: 19px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--void);
+}
+.cad-preflight-file > svg {
+  color: var(--chalk);
+}
+.cad-preflight-file strong,
+.cad-preflight-file small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cad-preflight-file strong {
+  font-size: 12.5px;
+}
+.cad-preflight-file small {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.cad-preflight-file button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 1px solid var(--bone);
+  border-radius: 9px;
+  color: var(--ash);
+  background: var(--panel);
+  cursor: pointer;
+}
+.cad-preflight-file button:hover {
+  color: var(--chalk);
+  border-color: var(--mist);
+  background: var(--slate);
+}
+.cad-preflight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+.cad-preflight-grid article {
+  min-width: 0;
+  min-height: 82px;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 10px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--panel);
+}
+.cad-preflight-grid article.pass {
+  border-color: var(--bone);
+  background: var(--void);
+}
+.cad-preflight-grid article.review {
+  color: var(--bronze);
+  border-color: var(--bronze);
+}
+.cad-preflight-grid article.fail {
+  color: var(--terra);
+  border-color: var(--terra);
+}
+.cad-preflight-icon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--mist);
+  background: var(--slate);
+}
+.cad-preflight-grid article.review .cad-preflight-icon {
+  color: var(--bronze);
+  background: var(--stone);
+}
+.cad-preflight-grid article.fail .cad-preflight-icon {
+  color: var(--terra);
+  background: var(--stone);
+}
+
+.cad-vertical {
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.cad-vertical-head h3 {
+  margin-top: 5px;
+  font-size: 18px;
+}
+.cad-vertical-head p:not(.eyebrow) {
+  max-width: 720px;
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.cad-vertical-form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px 12px;
+  align-items: end;
+  margin-top: 15px;
+}
+.cad-vertical-form label {
+  display: grid;
+  gap: 5px;
+}
+.cad-vertical-form label span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cad-vertical-form input {
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  outline: 0;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.cad-vertical-form input:focus {
+  border-color: var(--chalk);
+}
+.cad-vertical-form button {
+  grid-column: span 2;
+  min-height: 40px;
+}
+.cad-vertical-error {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 12px 0 0;
+  color: var(--terra);
+  font-size: 12.5px;
+}
+.cad-vertical-results {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 15px;
+}
+.cad-vertical-results article {
+  display: grid;
+  gap: 3px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--basalt);
+}
+.cad-vertical-results article span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.cad-vertical-results article strong {
+  font:
+    800 18px var(--font-aedexa),
+    "Nunito Sans",
+    sans-serif;
+}
+/* Цвет считается от `currentColor` */
+.cad-vertical-results article small {
+  color: color-mix(in srgb, currentColor 65%, transparent);
+  font-size: 11px;
+}
+.cad-vertical-results article.cut {
+  color: var(--bronze);
+  border-color: var(--bronze);
+  background: var(--slate);
+}
+.cad-vertical-results article.fill {
+  color: var(--marble);
+  border-color: var(--mist);
+  background: var(--slate);
+}
+.cad-vertical-results article.warning {
+  color: var(--terra);
+  border-color: var(--terra);
+  background: var(--slate);
+}
+.cad-vertical-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.cad-vertical-note {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 12px 0 0;
+  color: var(--bronze);
+  font-size: 12.5px;
+}
+@media (max-width: 900px) {
+  .cad-vertical-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cad-vertical-results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.cad-object-qa {
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.cad-object-qa-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+.cad-object-qa-head h3 {
+  margin-top: 5px;
+  font-size: 18px;
+}
+.cad-object-qa-head p:not(.eyebrow) {
+  max-width: 720px;
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.cad-qa-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 15px;
+}
+.cad-qa-summary article {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3px 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--basalt);
+}
+.cad-qa-summary article span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.cad-qa-summary article strong {
+  font:
+    800 18px var(--font-aedexa),
+    "Nunito Sans",
+    sans-serif;
+}
+.cad-qa-summary article small {
+  grid-column: 1 / -1;
+  color: var(--ash);
+  font-size: 11px;
+}
+.cad-qa-summary article.auto {
+  color: var(--marble);
+  border-color: var(--mist);
+  background: var(--slate);
+}
+/* Допущение и отказ */
+.cad-qa-summary article.review {
+  color: var(--bronze);
+  border-color: var(--bronze);
+  background: var(--slate);
+}
+.cad-qa-summary article.reject {
+  color: var(--terra);
+  border-color: var(--terra);
+  background: var(--slate);
+}
+.cad-evidence-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--bone);
+  border-radius: 9px;
+  color: var(--ash);
+  background: var(--basalt);
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+.cad-evidence-channels strong {
+  color: var(--bone);
+}
+.cad-evidence-channels span::before {
+  content: "— ";
+}
+.cad-qa-details-toggle {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 0 12px;
+  border: 1px solid var(--mist);
+  border-radius: 12px;
+  color: var(--ash);
+  background: var(--panel);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.cad-qa-details-toggle:hover {
+  border-color: var(--ash);
+  background: var(--void);
+}
+.cad-qa-details-toggle:focus-visible {
+  outline: 3px solid rgba(96, 96, 96, 0.2);
+  outline-offset: 2px;
+}
+.cad-qa-class-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.cad-qa-class-list article {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 7px 52px minmax(150px, 1fr) minmax(230px, 1.25fr);
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel);
+}
+.cad-qa-class-list article > i {
+  align-self: stretch;
+  border-radius: 99px;
+}
+.cad-qa-class-list strong,
+.cad-qa-class-list small {
+  display: block;
+}
+.cad-qa-class-list strong {
+  font-size: 11.5px;
+}
+.cad-qa-class-list small {
+  margin-top: 3px;
+  color: var(--ash);
+  font-size: 11px;
+}
+.cad-qa-class-list dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+.cad-qa-class-list dt {
+  color: var(--ash);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.cad-qa-class-list dd {
+  margin: 3px 0 0;
+  color: var(--ash);
+  font:
+    800 10px var(--font-aedexa),
+    "Nunito Sans",
+    sans-serif;
+}
+
+@media (max-width: 1180px) {
+  .cad-object-qa-head {
+    flex-direction: column;
+  }
+  .cad-qa-class-list {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  .cad-object-qa {
+    padding: 15px;
+  }
+  .cad-qa-summary {
+    grid-template-columns: 1fr;
+  }
+  .cad-qa-class-list article {
+    grid-template-columns: 7px 1fr;
+  }
+  .cad-qa-class-list dl {
+    grid-column: 2;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .cad-scene-toolbar {
+    flex-wrap: wrap;
+    padding-block: 8px;
+  }
+}
+.cad-preflight-grid strong,
+.cad-preflight-grid small {
+  display: block;
+}
+.cad-preflight-grid strong {
+  font-size: 12.5px;
+}
+.cad-preflight-grid small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.cad-preflight-grid b {
+  max-width: 190px;
+  color: var(--ash);
+  font-size: 11.5px;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.cad-preflight-decision {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.cad-preflight-decision > p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--terra);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+.cad-preflight-decision > div {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+}
+.cad-preflight-decision .cad-primary-action,
+.cad-preflight-decision .cad-secondary-action {
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0 15px;
+}
+.cad-primary-action:disabled {
+  opacity: 0.46;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.cad-auto-reference {
+  min-height: 90px;
+  display: grid;
+  grid-template-columns: 42px minmax(260px, 1fr) minmax(420px, 1.4fr);
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+  padding: 15px 18px;
+  border: 1px solid var(--mist);
+  border-radius: 12px;
+  background: var(--slate);
+}
+.cad-auto-reference.inferred {
+  border-color: var(--mist);
+  background: var(--slate);
+}
+.cad-auto-reference.source_preserved {
+  border-color: var(--bone);
+  background: var(--basalt);
+}
+.cad-auto-reference-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--marble);
+  background: var(--slate);
+}
+.cad-auto-reference.inferred .cad-auto-reference-icon {
+  color: var(--chalk);
+  background: var(--stone);
+}
+.cad-auto-reference.source_preserved .cad-auto-reference-icon {
+  color: var(--mist);
+  background: var(--hair);
+}
+.cad-auto-reference h3 {
+  margin-top: 4px;
+  color: var(--marble);
+  font-size: 15.5px;
+}
+.cad-auto-reference p:not(.eyebrow) {
+  margin: 4px 0 0;
+  color: var(--ash);
+  font-size: 12.5px;
+}
+.cad-auto-reference dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+.cad-auto-reference dl div {
+  padding-left: 10px;
+  border-left: 1px solid var(--bone);
+}
+.cad-auto-reference dt {
+  color: var(--ash);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.cad-auto-reference dd {
+  margin: 4px 0 0;
+  color: var(--ash);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .cad-preflight-grid {
+    grid-template-columns: 1fr;
+  }
+  .cad-preflight-decision {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .cad-preflight-decision > div {
+    width: 100%;
+  }
+  .cad-preflight-decision > div button {
+    flex: 1;
+  }
+  .cad-auto-reference {
+    grid-template-columns: 42px 1fr;
+  }
+  .cad-auto-reference dl {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .cad-preflight {
+    padding: 16px;
+  }
+  .cad-preflight-heading {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cad-preflight-file {
+    grid-template-columns: 22px minmax(0, 1fr);
+  }
+  .cad-preflight-file button {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+  .cad-preflight-grid article {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+  .cad-preflight-grid b {
+    grid-column: 2;
+    max-width: none;
+    text-align: left;
+  }
+  .cad-preflight-decision > div {
+    flex-direction: column;
+  }
+  .cad-auto-reference {
+    grid-template-columns: 1fr;
+  }
+  .cad-auto-reference dl {
+    grid-column: auto;
+    grid-template-columns: 1fr 1fr;
+  }
+  .cad-auto-reference-icon {
+    display: none;
+  }
+}

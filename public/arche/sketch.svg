@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="1600" height="1200" fill="none">
+  <title>Архитектурное построение: арки, окружности, квадраты</title>
+  <g stroke="rgba(255,255,255,0.62)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+  <path d="M 140 1040 L 140 950 A 660 660 0 0 1 1460 950 L 1460 1040" stroke-opacity="0.85"/>
+  <path d="M 202 1006 L 202 904 A 598 598 0 0 1 1398 904 L 1398 1006" stroke-opacity="0.75"/>
+  <path d="M 264 972 L 264 858 A 536 536 0 0 1 1336 858 L 1336 972" stroke-opacity="0.65"/>
+  <path d="M 326 938 L 326 812 A 474 474 0 0 1 1274 812 L 1274 938" stroke-opacity="0.55"/>
+  <path d="M 388 904 L 388 766 A 412 412 0 0 1 1212 766 L 1212 904" stroke-opacity="0.45"/>
+  <path d="M 450 870 L 450 720 A 350 350 0 0 1 1150 720 L 1150 870" stroke-opacity="0.35"/>
+  <path d="M 512 836 L 512 674 A 288 288 0 0 1 1088 674 L 1088 836" stroke-opacity="0.25"/>
+  <path d="M 80 1040 H 1520" stroke-opacity="0.9"/>
+  <rect x="140.0" y="120.0" width="440.0" height="440.0" stroke-opacity="0.80"/>
+  <circle cx="360.0" cy="340.0" r="220.0" stroke-opacity="0.60"/>
+  <path d="M 140.0 120.0 L 580.0 560.0 M 580.0 120.0 L 140.0 560.0" stroke-opacity="0.28"/>
+  <rect x="272.9" y="277.8" width="311.1" height="311.1" stroke-opacity="0.64"/>
+  <circle cx="428.4" cy="433.3" r="155.6" stroke-opacity="0.46"/>
+  <path d="M 272.9 277.8 L 584.0 588.9 M 584.0 277.8 L 272.9 588.9" stroke-opacity="0.21"/>
+  <rect x="366.8" y="389.3" width="220.0" height="220.0" stroke-opacity="0.48"/>
+  <circle cx="476.8" cy="499.3" r="110.0" stroke-opacity="0.32"/>
+  <path d="M 366.8 389.3 L 586.8 609.3 M 586.8 389.3 L 366.8 609.3" stroke-opacity="0.14"/>
+  <path d="M 1278.0 320 A 62.0 62.0 0 0 1 1340 258.0" stroke-opacity="0.53"/>
+  <path d="M 1216.0 320 A 124.0 124.0 0 0 1 1340 196.0" stroke-opacity="0.44"/>
+  <path d="M 1154.0 320 A 186.0 186.0 0 0 1 1340 134.0" stroke-opacity="0.35"/>
+  <path d="M 1092.0 320 A 248.0 248.0 0 0 1 1340 72.0" stroke-opacity="0.26"/>
+  <path d="M 1030.0 320 A 310.0 310.0 0 0 1 1340 10.0" stroke-opacity="0.17"/>
+  <circle cx="1340" cy="320" r="3" stroke-opacity="0.9"/>
+  <path d="M 1340 70 V 520 M 1000 320 H 1530" stroke-opacity="0.22" stroke-dasharray="14 6 3 6"/>
+  </g>
+</svg>

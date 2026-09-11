@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Лист разбит по рабочим областям */
+@import "./base.css";
+@import "./placement.css";
+@import "./shell.css";
+@import "./topography.css";
+@import "./surfaces.css";
+@import "./placement-plan.css";
+@import "./reconstruction.css";
+@import "./archive.css";
+@import "./drawing.css";

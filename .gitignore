@@ -1,0 +1,25 @@
+# зависимости
+/node_modules
+
+# сборка и локальное состояние
+/.next/
+/.vinext/
+/dist/
+/.wrangler/
+/tsconfig.tsbuildinfo
+/public/libredwg/libredwg-web.wasm
+
+# ключи и настройки окружения
+.env*
+!.env.example
+*.pem
+
+# журналы
+npm-debug.log*
+yarn-debug.log*
+.pnpm-debug.log*
+
+# кэш преобразования CAD, пересобирается
+**/.aedexa-cache/
+
+.DS_Store

@@ -1,0 +1,45 @@
+// Привязки Cloudflare для AEDEXA.
+//
+// База нужна только учётным записям и синхронизации проектов: расчёт идёт
+// на устройстве, а архив живёт в браузере и работает без сервера.
+//
+// Создать базу и применить схему:
+//   npx wrangler d1 create aedexa
+//   подставить database_id ниже
+//   npx wrangler d1 migrations apply aedexa --remote
+//
+// Дату совместимости и флаг nodejs_compat здесь не задают: их выставляет
+// сборка vinext. Повторное объявление флага workerd считает ошибкой и
+// отказывается запускаться — сервер разработки падает на старте.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aedexa",
+  // Свой адрес. Запись DNS и сертификат Cloudflare выпускает сам, вручную
+  // добавлять ничего не нужно. Домен должен быть активен в аккаунте, иначе
+  // выкат падает с «zone not found».
+  "routes": [
+    { "pattern": "aedexa.site", "custom_domain": true },
+    { "pattern": "www.aedexa.site", "custom_domain": true }
+  ],
+  // Запасной адрес aedexa.<поддомен>.workers.dev. Со своим доменом он не нужен,
+  // но пригождается, когда с доменом что-то не так: сайт остаётся доступен.
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  // Настройки модели для режима 2D → 3D. Это не секреты: имя провайдера, адрес
+  // и название модели. Сам ключ кладётся отдельно и в файл не попадает:
+  //   npx wrangler secret put FEATHERLESS_API_KEY
+  // Пока ключа нет, режим просто не показывается — эти строки ничего не включают.
+  "vars": {
+    "FEATHERLESS_BASE_URL": "https://api.featherless.ai/v1",
+    "FEATHERLESS_MODEL": "Qwen/Qwen3-VL-32B-Instruct",
+    "RECONSTRUCTION_AI_CONTEXT_LENGTH": "48000"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aedexa",
+      "database_id": "5bab5cce-ff34-4cb9-8baf-cb8a0f25518f",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

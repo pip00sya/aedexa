@@ -1,0 +1,1133 @@
+/* ARCHE - форма и материал поверх общей раскладки */
+
+/* Зал: фон и воздух */
+
+/* Три слоя фона, каждый со своей задачей */
+body {
+  position: relative;
+  color: var(--marble);
+  font-family: var(--font-aedexa), "Golos Text", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.005em;
+
+  /* Фон - только мелкая фактура: косая штриховка, миллиметровка и зерно */
+  background-color: var(--void);
+  background-image: url("/arche/hatch.svg"), url("/arche/grid.svg");
+  background-repeat: repeat;
+  background-size:
+    132px 132px,
+    96px 96px;
+}
+
+/* Полотно за телом страницы */
+html {
+  background-color: var(--void);
+}
+
+/* Полосы у левого края */
+.placement-app {
+  position: relative;
+}
+.placement-app::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 76px;
+  pointer-events: none;
+  background: repeating-linear-gradient(-45deg, var(--chalk) 0 1px, transparent 1px 13px);
+  opacity: 0.045;
+}
+
+/* Типографика */
+
+h1,
+h2,
+.plan-result-badge strong {
+  font-family: var(--font-display), "Golos Text", var(--font-aedexa), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.16;
+}
+
+/* Метка раздела */
+.placement-eyebrow,
+.objects-item-head b,
+.terrain-facts small,
+.result-kpis small,
+.layer-head b {
+  font-family: var(--font-aedexa), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+/* Числа моноширинные */
+.result-kpis strong,
+.terrain-facts strong,
+.plan-result-badge strong,
+.objects-item-head b,
+.objects-edge,
+.rule-item b,
+.layer-head b,
+input[type="number"] {
+  font-family: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Поверхности: камень, не карточки */
+
+/* Панель - приподнятая плита, а не карточка: волосяная линия вместо рамки, никакой тени */
+.placement-sourcebar,
+.placement-workspace,
+.placement-canvas-panel,
+.placement-inspector,
+.inspector-section,
+.placement-upload-card,
+.placement-map-entry,
+.placement-demo-card,
+.objects-item,
+.layer-item,
+.variant-item,
+.rule-item,
+.terrain-facts article,
+.result-kpis article {
+  border-radius: var(--radius);
+  border: 1px solid var(--hair);
+  background: var(--basalt);
+  box-shadow: none;
+} /* Вложенная плита темнее внешней */
+.inspector-section .objects-item,
+.inspector-section .layer-item,
+.inspector-section .rule-item,
+.inspector-section .variant-item,
+.inspector-section .terrain-facts article,
+.inspector-section .result-kpis article {
+  border-color: var(--hair-2);
+  background: var(--slate);
+}
+
+/* Пилюля */
+
+/* Единственная форма кнопки */
+.placement-button,
+.placement-view-toggle button,
+.objects-add,
+.canvas-icon-button,
+.plain-icon {
+  border-radius: var(--pill);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.placement-button {
+  border: 1px solid var(--hair);
+  background: transparent;
+  color: var(--marble);
+}
+.placement-button:hover {
+  border-color: var(--mist);
+  background: color-mix(in srgb, var(--chalk) 7%, transparent);
+  transform: none;
+}
+.placement-button.primary {
+  border-color: var(--chalk);
+  background: var(--chalk);
+  color: var(--void);
+}
+.placement-button.primary:hover {
+  border-color: var(--bone);
+  background: var(--bone);
+  color: var(--void);
+}
+.placement-button.secondary {
+  border-color: var(--hair);
+  background: transparent;
+  color: var(--marble);
+}
+.placement-button.secondary:hover {
+  border-color: var(--mist);
+  color: var(--chalk);
+}
+.placement-view-toggle {
+  padding: 3px;
+  border-color: var(--hair);
+  border-radius: var(--pill);
+  background: var(--basalt);
+}
+.placement-view-toggle button {
+  border: 0;
+  background: transparent;
+  color: var(--ash);
+}
+.placement-view-toggle button.active,
+.placement-view-toggle button[aria-selected="true"] {
+  background: var(--chalk);
+  color: var(--void);
+}
+
+.objects-add {
+  border: 1px solid var(--hair);
+  background: transparent;
+  color: var(--marble);
+}
+.objects-add:hover {
+  border-color: var(--mist);
+  background: color-mix(in srgb, var(--chalk) 7%, transparent);
+}
+
+.canvas-icon-button,
+.plain-icon,
+.objects-remove {
+  border: 1px solid var(--hair);
+  background: transparent;
+  color: var(--mist);
+}
+.canvas-icon-button:hover,
+.plain-icon:hover {
+  border-color: var(--mist);
+  color: var(--chalk);
+}
+.objects-remove {
+  border-radius: var(--pill);
+}
+.objects-remove:hover {
+  border-color: var(--terra);
+  background: transparent;
+  color: var(--terra);
+}
+
+/* Поля ввода */
+
+.placement-field input,
+.placement-field select,
+.placement-field textarea,
+input[type="number"],
+input[type="text"],
+input[type="search"],
+select {
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-sm);
+  background: var(--onyx);
+  color: var(--marble);
+}
+.placement-field input:focus,
+.placement-field select:focus,
+input:focus,
+select:focus {
+  border-color: var(--mist);
+  outline: none;
+}
+.placement-field span {
+  color: var(--ash);
+}
+
+/* Статус: точка и слово, не заливка */
+
+/* Цветных плашек в этом языке нет */
+.rule-item {
+  border-left: 2px solid var(--stone);
+}
+.rule-item.pass {
+  border-left-color: var(--mist);
+}
+.rule-item.review {
+  border-left-color: var(--bronze);
+}
+.rule-item.fail,
+.rule-item.missing {
+  border-left-color: var(--terra);
+}
+.rule-item.review b,
+.objects-issue.review {
+  color: var(--bronze);
+}
+.rule-item.fail b,
+.rule-item.missing b,
+.objects-issue.conflict {
+  color: var(--terra);
+}
+.objects-issue.ok {
+  color: var(--mist);
+}
+.objects-item.conflict {
+  border-left: 2px solid var(--terra);
+}
+.objects-item.selected,
+.layer-item.edited {
+  border-left: 2px solid var(--chalk);
+  background: var(--slate);
+}
+
+/* Лист: чертеж лежит на свету */
+
+/* План - единственная светлая поверхность в темном зале */
+.placement-canvas {
+  border-radius: var(--radius);
+  background: var(--sheet);
+  background-image:
+    linear-gradient(var(--sheet-hair-2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sheet-hair-2) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.placement-canvas > svg {
+  color: var(--sheet-ink);
+}
+.placement-canvas.empty {
+  background: var(--basalt);
+  background-image: none;
+}
+
+.plan-status-badge,
+.plan-result-badge,
+.plan-legend {
+  border: 1px solid var(--sheet-hair);
+  border-radius: var(--pill);
+  background: color-mix(in srgb, var(--sheet) 88%, transparent);
+  color: var(--sheet-ink);
+  backdrop-filter: blur(6px);
+  box-shadow: none;
+}
+.plan-result-badge strong {
+  color: var(--sheet-ink);
+}
+.plan-result-badge span,
+.plan-status-badge {
+  color: var(--sheet-muted);
+}
+.plan-legend span {
+  color: var(--sheet-muted);
+}
+
+/* Объем: тот же лист, но сцена рисует свой фон сама */
+.placement-scene {
+  border-radius: var(--radius);
+  background: var(--sheet);
+}
+
+/* Мелочи */
+.objects-note,
+.purpose-card p,
+.layer-reason,
+.placement-upload-card small,
+.placement-demo-card small {
+  color: var(--ash);
+}
+
+hr,
+.inspector-section + .inspector-section {
+  border-color: var(--hair-2);
+}
+
+::selection {
+  background: var(--chalk);
+  color: var(--void);
+}
+
+/* Полоса прокрутки */
+* {
+  scrollbar-color: var(--stone) transparent;
+  scrollbar-width: thin;
+}
+
+/* Инверсия: там, где фон стал светлым, буква обязана стать черной */
+.placement-upload-action {
+  border-radius: var(--pill);
+  background: var(--chalk);
+  color: var(--void);
+  font-weight: 600;
+}
+.placement-upload-card:hover .placement-upload-action {
+  background: var(--bone);
+}
+.skip-link {
+  border-radius: var(--pill);
+  background: var(--chalk);
+  color: var(--void);
+}
+
+/* Первый экран */
+
+/* Плиты полупрозрачные */
+.placement-sourcebar,
+.placement-workspace,
+.inspector-section,
+.placement-upload-card,
+.placement-map-entry,
+.placement-demo-card {
+  background: color-mix(in srgb, var(--basalt) 88%, transparent);
+}
+
+/* Заглавная плита */
+.placement-sourcebar {
+  position: relative;
+  overflow: hidden;
+  /* Та же внутренняя мера, что у вводных плит трех остальных режимов */
+  padding: 22px 26px;
+}
+/* Два слоя подложки */
+.placement-sourcebar::before,
+.placement-sourcebar::after,
+.topography-intro::before,
+.topography-intro::after,
+.reconstruction-hero::before,
+.reconstruction-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: var(--chalk);
+}
+.placement-sourcebar,
+.topography-intro,
+.reconstruction-hero {
+  position: relative;
+  overflow: hidden;
+}
+.placement-sourcebar > *,
+.topography-intro > *,
+.reconstruction-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Строка пути наверху плиты */
+.placement-title .placement-eyebrow {
+  margin-bottom: 8px;
+}
+
+/* Заголовок вводной плиты */
+.placement-title h1 {
+  max-width: 46ch;
+  margin: 0 0 10px;
+}
+/* Вводный текст читается */
+.placement-title > p:last-child {
+  max-width: 62ch;
+  color: var(--mist);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* Карточка загрузки */
+.placement-upload-card,
+.reconstruction-dropzone,
+.cad-dropzone {
+  border-width: 1px;
+  border-style: dashed;
+  border-color: var(--stone);
+  /* Решетка лежит на самой карточке, то есть поверх скетча */
+  background-image:
+    linear-gradient(rgba(96, 96, 96, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 96, 96, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.placement-upload-card {
+  padding: 30px 24px;
+}
+.placement-upload-card:hover,
+.reconstruction-dropzone:hover,
+.reconstruction-dropzone.dragging,
+.cad-dropzone:hover,
+.cad-dropzone.dragging {
+  border-color: var(--mist);
+  border-style: solid;
+  /* Камень под курсором светлеет */
+  background-color: color-mix(in srgb, var(--stone) 62%, transparent);
+}
+.placement-upload-icon {
+  border: 1px solid var(--bone);
+  border-radius: 18px;
+  background: var(--slate);
+  color: var(--chalk);
+}
+.placement-upload-card strong {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+.placement-local-note {
+  color: var(--ash);
+}
+
+/* Готовые участки и карта */
+.placement-demo-label,
+.placement-demo-card small {
+  color: var(--ash);
+}
+.placement-demo-card strong,
+.placement-map-entry strong {
+  font-weight: 600;
+}
+.placement-demo-card:hover,
+.placement-map-entry:hover {
+  border-color: var(--mist);
+  background: color-mix(in srgb, var(--slate) 92%, transparent);
+}
+.placement-demo-card svg,
+.placement-map-entry svg {
+  color: var(--mist);
+}
+
+/* Чертеж: чернила на листе */
+
+/* План - не диаграмма, а чертеж */
+
+.placement-canvas > svg {
+  --ink: var(--sheet-ink);
+  --ink-2: #4a4a52;
+  --ink-3: #8b8983;
+}
+
+/* Штриховка: единственный способ показать "сюда нельзя" без цвета */
+.placement-canvas > svg defs pattern#restriction-hatch path {
+  stroke: var(--ink-3);
+}
+
+/* Граница участка */
+.parcel {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  vector-effect: non-scaling-stroke;
+}
+.parcel.candidate {
+  stroke: var(--ink-2);
+  stroke-dasharray: 7 4;
+}
+
+/* Линия застройки */
+.buildable-envelope,
+.buildable-envelope.outline {
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 1;
+  stroke-dasharray: 5 4;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Пятно застройки */
+.buildable-spot {
+  fill: color-mix(in srgb, var(--sheet-ink) 12%, transparent);
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  stroke-dasharray: 6 3;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Охранные зоны и разрывы */
+.utility-zone polygon,
+.context-zone {
+  fill: color-mix(in srgb, var(--bronze) 12%, transparent);
+  stroke: var(--bronze);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  vector-effect: non-scaling-stroke;
+}
+.fire-restriction {
+  fill: url(#restriction-hatch);
+  stroke: var(--ink-3);
+  stroke-width: 0.9;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Красная линия */
+.red-line {
+  stroke: var(--terra);
+  stroke-width: 2;
+  stroke-dasharray: 12 4 3 4;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Существующее - серым; проектируемое - тушью */
+.existing-building {
+  fill: color-mix(in srgb, var(--sheet-ink) 16%, transparent);
+  stroke: var(--ink-2);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.proposed-building {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.proposed-building.variant {
+  stroke-dasharray: 8 4;
+}
+
+.site-object {
+  fill: color-mix(in srgb, var(--sheet-ink) 7%, transparent);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+  cursor: grab;
+}
+.site-object.yard {
+  fill: url(#restriction-hatch);
+  stroke: var(--ink-3);
+  stroke-dasharray: 5 3;
+}
+.site-object.conflict {
+  fill: color-mix(in srgb, var(--terra) 14%, transparent);
+  stroke: var(--terra);
+}
+.site-object.selected {
+  stroke-width: 2.8;
+}
+
+/* Отметки окружения */
+.context-mark circle:last-child {
+  fill: var(--ink);
+  stroke: var(--sheet);
+  stroke-width: 1.6;
+}
+.context-mark.tree .context-zone,
+.context-mark.well .context-zone,
+.context-mark.pole .context-zone {
+  fill: color-mix(in srgb, var(--bronze) 10%, transparent);
+  stroke: var(--bronze);
+}
+
+/* Подоснова чертежа */
+.detected-line,
+.context-object {
+  stroke: var(--ink-3);
+  stroke-width: 0.7;
+  opacity: 0.5;
+  vector-effect: non-scaling-stroke;
+}
+.context-object {
+  fill: none;
+}
+
+/* Размерная выноска */
+.setback-label circle {
+  fill: var(--sheet);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.setback-label text {
+  fill: var(--ink);
+  font-family: var(--font-mono), monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-anchor: middle;
+}
+.building-label {
+  fill: var(--ink-2);
+  font-family: var(--font-mono), monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-anchor: middle;
+}
+
+/* Тень от солнца */
+.sun-shadow {
+  fill: color-mix(in srgb, var(--sheet-ink) 9%, transparent);
+  stroke: none;
+}
+
+/* Условные обозначения под листом */
+.plan-legend i {
+  border-radius: 0;
+}
+.legend-parcel {
+  background: var(--sheet-ink);
+}
+.legend-red {
+  background: var(--terra);
+}
+.legend-zone {
+  background: var(--bronze);
+}
+.legend-buildable {
+  background: color-mix(in srgb, var(--sheet-ink) 30%, transparent);
+}
+.legend-project {
+  background: var(--sheet-ink);
+}
+
+/* Уточнение иерархии на листе */
+.buildable-spot {
+  fill: color-mix(in srgb, var(--sheet-ink) 15%, transparent);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-dasharray: none;
+}
+.existing-building {
+  fill: url(#restriction-hatch);
+  stroke: var(--ink-3);
+  stroke-width: 0.9;
+}
+
+/* Сетка листа тише */
+.placement-canvas {
+  background-image:
+    linear-gradient(rgba(16, 16, 20, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 16, 20, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Условные обозначения */
+.plan-legend i {
+  width: 18px;
+  height: 0;
+  border-radius: 0;
+  background: none;
+  border-top: 2px solid var(--sheet-ink);
+}
+.legend-red {
+  border-top: 2px dashed var(--terra);
+}
+.legend-zone {
+  border-top: 2px dashed var(--bronze);
+}
+.legend-buildable {
+  height: 8px;
+  border: 1px solid var(--sheet-ink);
+  background: color-mix(in srgb, var(--sheet-ink) 15%, transparent);
+}
+.legend-project {
+  border-top: 2px solid var(--sheet-ink);
+}
+
+/* Общее правило инверсии */
+.placement-button.primary,
+.placement-upload-action,
+.cad-primary-action,
+.archive-card footer button,
+.skip-link,
+.placement-view-toggle button.active,
+.placement-view-toggle button[aria-selected="true"] {
+  background: var(--chalk);
+  color: var(--void);
+  border-color: var(--chalk);
+}
+.placement-button.primary:hover,
+.placement-upload-action:hover,
+.cad-primary-action:hover,
+.archive-card footer button:hover {
+  background: var(--bone);
+  border-color: var(--bone);
+  color: var(--void);
+}
+.placement-button.primary svg,
+.placement-upload-action svg,
+.cad-primary-action svg,
+.archive-card footer button svg {
+  color: currentColor;
+}
+
+/* Лист светлый, значит и буква на нем черная */
+.placement-canvas,
+.placement-scene {
+  color: var(--sheet-ink);
+}
+
+/* Оболочка: неподвижная боковая панель */
+
+/* Разделы стоят слева и не уезжают */
+.aedexa-shell {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* Боковая панель */
+.aedexa-rail {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 22px 16px 18px;
+  border-right: 1px solid var(--hair);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("/arche/topo/topo-hill-dark.svg") center center / auto 100% no-repeat,
+    var(--void);
+}
+
+.aedexa-rail-brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 4px 6px 16px;
+  /* Черта под знаком */
+  border-bottom: 1px solid var(--hair);
+  color: inherit;
+  text-decoration: none;
+}
+/* Затемнение под знаком */
+.aedexa-rail-brand::before {
+  content: "";
+  position: absolute;
+  inset: -22px -16px 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.88) 0,
+    rgba(0, 0, 0, 0.58) 58%,
+    transparent 100%
+  );
+}
+.aedexa-rail-brand span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+.aedexa-rail-brand strong {
+  font-size: 14.5px;
+  font-weight: 300;
+  color: var(--chalk);
+}
+/* Подпись раздела */
+.aedexa-rail-brand small {
+  display: block;
+  height: 2.7em;
+  overflow: hidden;
+  color: var(--ash);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.aedexa-rail-modes {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.aedexa-rail-modes button {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: var(--pill);
+  background: transparent;
+  color: var(--ash);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease;
+}
+.aedexa-rail-modes button:hover {
+  border-color: var(--hair);
+  color: var(--marble);
+}
+/* Выбранный раздел светится */
+.aedexa-rail-modes button.active {
+  border-color: var(--chalk);
+  background: var(--chalk);
+  color: var(--void);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--chalk) 30%, transparent),
+    0 0 26px color-mix(in srgb, var(--chalk) 18%, transparent);
+}
+.aedexa-rail-modes button svg {
+  flex: none;
+}
+
+.aedexa-rail-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--hair-2);
+  color: var(--ash);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.aedexa-rail-status svg {
+  flex: none;
+  color: var(--mist);
+}
+
+.placement-app::before {
+  content: none;
+}
+.aedexa-rail::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 46px;
+  pointer-events: none;
+  background: repeating-linear-gradient(-45deg, var(--chalk) 0 1px, transparent 1px 13px);
+  opacity: 0.05;
+}
+
+/* На узком экране панель ложится сверху строкой */
+@media (max-width: 900px) {
+  .aedexa-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .aedexa-rail {
+    position: sticky;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--hair);
+    overflow-x: auto;
+  }
+  /* Затемнения под знаком тут нет */
+  .aedexa-rail-brand::before {
+    display: none;
+  }
+  .aedexa-rail-brand {
+    padding: 0 12px 0 0;
+    border-right: 1px solid var(--hair-2);
+    border-bottom: 0;
+  }
+  .aedexa-rail-modes {
+    flex: 1;
+    flex-direction: row;
+  }
+  .aedexa-rail-modes button span {
+    white-space: nowrap;
+  }
+  .aedexa-rail-status,
+  .aedexa-rail::after {
+    display: none;
+  }
+}
+
+/* Воздух: фону нужно место */
+
+/* Плиты полупрозрачны, а вокруг них есть поле */
+.placement-app {
+  padding: 26px 30px 40px;
+}
+.app-main {
+  padding: 0;
+}
+
+/* Полупрозрачный камень */
+.placement-sourcebar,
+.placement-workspace,
+.inspector-section,
+.placement-upload-card,
+.placement-map-entry,
+.placement-demo-card,
+.reconstruction-dropzone,
+.cad-dropzone {
+  background: color-mix(in srgb, var(--basalt) 76%, transparent);
+  backdrop-filter: blur(3px);
+}
+
+/* Разрыв между плитами шире обычного */
+.placement-app > * + * {
+  margin-top: 22px;
+}
+
+/* Заглавная плита пропускает фон сильнее */
+.placement-sourcebar {
+  background: color-mix(in srgb, var(--basalt) 62%, transparent);
+}
+
+@media (max-width: 900px) {
+  .placement-app {
+    padding: 16px 14px 28px;
+  }
+}
+
+/* Построение и съемка в рабочей колонке */
+
+/* Крупные рисунки живут в колонке содержимого */
+.placement-app {
+  position: relative;
+  isolation: isolate;
+}
+.placement-app::before {
+  content: "";
+  position: fixed;
+  left: 248px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url("/arche/sketch.svg") right -60px bottom -40px / 62% auto no-repeat,
+    url("/arche/topo-lines.svg") left -80px top 40px / 78% auto no-repeat;
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  .placement-app::before {
+    left: 0;
+  }
+}
+
+/* Топосъемка и архитектура в рабочей части */
+
+/* Те же материалы дизайн-лаборатории, что и на первой странице */
+.placement-app::before {
+  background:
+    url("/arche/cloud/cloud-arcade-dark.png") right -6% bottom -14% / auto 82% no-repeat,
+    url("/arche/topo/topo-hill-dark.svg") left -10% top -8% / auto 96% no-repeat;
+  opacity: 0.92;
+}
+
+/* Заглавная плита */
+.placement-sourcebar::before,
+.topography-intro::before,
+.reconstruction-hero::before {
+  background: url("/arche/topo/topo-mount-ochre.svg") right center / cover no-repeat;
+  opacity: 0.42;
+  /* Обесцвечивание и переворот вместе */
+  filter: grayscale(1) invert(1);
+  mask-image: linear-gradient(
+    260deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.6) 26%,
+    rgba(0, 0, 0, 0.2) 48%,
+    transparent 72%
+  );
+}
+
+/* Штриховка отдельным слоем */
+.placement-sourcebar::after,
+.topography-intro::after,
+.reconstruction-hero::after {
+  background: repeating-linear-gradient(-45deg, var(--chalk) 0 1px, transparent 1px 14px) right
+    top / 190px 100% no-repeat;
+  opacity: 0.16;
+  mask-image: linear-gradient(
+    270deg,
+    #000 0px,
+    rgba(0, 0, 0, 0.92) 64px,
+    rgba(0, 0, 0, 0.34) 134px,
+    transparent 190px
+  );
+}
+
+/* С загруженным исходником плита сжимается в полоску действий */
+.placement-sourcebar.compact {
+  min-height: 0;
+  justify-content: flex-end;
+  padding: 12px 14px;
+}
+.placement-sourcebar.compact::before,
+.placement-sourcebar.compact::after {
+  display: none;
+}
+
+/* Кнопка на этой плите стоит не на пустом поле, а на съемке */
+.placement-sourcebar .placement-button.secondary {
+  background: color-mix(in srgb, var(--void) 62%, transparent);
+  backdrop-filter: blur(7px);
+}
+
+/* Модуль топосъемки */
+.topography-preserved {
+  position: relative;
+  overflow: hidden;
+}
+.topography-preserved::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url("/arche/cloud/cloud-vault-dark.png") right -12% top -20% / auto 150% no-repeat;
+  opacity: 0.85;
+}
+.topography-preserved > * {
+  position: relative;
+}
+
+/* Пустой экран загрузки */
+.placement-canvas.empty,
+.cad-main,
+.reconstruction-main {
+  position: relative;
+  overflow: hidden;
+}
+.placement-canvas.empty::before,
+.cad-main::before,
+.reconstruction-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url("/arche/sketch/27_dd3705.jpg") center / cover no-repeat;
+  filter: grayscale(1) contrast(1.1);
+  opacity: 0.12;
+  mix-blend-mode: screen;
+}
+
+/* Содержимое панели поверх скетча и квадрата */
+.cad-main > *,
+.reconstruction-main > *,
+.placement-canvas.empty > * {
+  position: relative;
+  z-index: 1;
+}
+.placement-canvas.empty > * {
+  position: relative;
+}
+
+/* Переходы мягче по всей рабочей области */
+.inspector-section,
+.objects-item,
+.layer-item,
+.rule-item,
+.placement-demo-card,
+.placement-map-entry,
+.placement-upload-card {
+  transition:
+    border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Материал дизайн-лаборатории обесцвечивается */
+.placement-app::before,
+.topography-preserved::before,
+.aedexa-rail {
+  filter: grayscale(1);
+}
+
+/* Лист остается на виду, пока разбор справа прокручивается */
+@media (min-width: 1120px) {
+  .placement-workspace {
+    overflow: visible;
+  }
+  .placement-canvas-panel {
+    position: sticky;
+    top: 16px;
+    align-self: start;
+  }
+}
